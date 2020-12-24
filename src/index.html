@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_dataLayer.html") %>
+      <%= t.include("partials/_gtm.html") %>
+    <% } %>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_gtmNoScript.html") %>
+    <% } %>
+    <responsive-child class="interactive">
+
+      <div class="graphic-hed">Ratio of students to school nurses in Washington school districts</div>
+
+      <div class="graphic-chatter">School nurses are distributed disproportionately across the state, with more nurses per student in urban districts, and fewer in rural areas and those with higher proportions of low-income students.</div>
+      <!-- content goes here -->
+
+      <div class="map_button hideMap">
+        See which areas have a medical care shortage
+      </div>
+
+      <div id="legendCon">
+        <div class="label">Students per nurse</div>
+        <div class="legend">
+          <div class="color" style="background-color:#FAE2C1;"></div>
+          <div class="number">
+            <span class="tests_pos">0 - 999</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="color" style="background-color:#F4BD6E;"></div>
+          <div class="number">
+            <span class="tests_pos">1,000 - 1,999</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="color" style="background-color:#ED8A52;"></div>
+          <div class="number">
+            <span class="tests_pos">2,000 - 2,999</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="color" style="background-color:#E34D32;"></div>
+          <div class="number">
+            <span class="tests_pos">3,000 - 3,999</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div id="last" class="color" style="background-color:#B22118;"></div>
+          <div class="number">
+            <span class="tests_pos">4,000 + </span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="legend special">
+          <div id="last" class="color" style="background-color:gray;"></div>
+          <div class="number">
+            <span class="tests_pos">*The district may not directly employ a nurse.</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="map" class="aspect-ratio-outer">
+        <div class="aspect-ratio-inner">
+
+          <leaflet-map>
+            <tile-layer layer="cartoPositron"></tile-layer>
+          </leaflet-map>
+
+        </div>
+      </div>
+
+      <figcaption class="source-container">
+          <p class="data-source"><a href="http://cedr.us/papers/working/CEDR%20Working%20Paper%20No.%2012072020-1.pdf" target="_blank" rel="nofollow noreferrer noopener">
+            Source: Center for Education Data & Research at the University of Washington
+          </a></p>
+          <p class="art-credit">Lauren Flannery / The Seattle Times</p>
+        </figcaption>
+
+
+    </responsive-child>
+
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

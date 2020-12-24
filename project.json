@@ -1,0 +1,22 @@
+{
+  "s3": {
+    "stage": {
+      "bucket": "projects-staging.seattletimes.com",
+      "path": "slippery-parenchyma"
+    },
+    "live": {
+      "bucket": "projects.seattletimes.com",
+      "path": "2020/local/nurses-students-medical-access"
+    }
+  },
+  "title": "",
+  "description": "",
+  "author": "",
+  "url": "",
+  "post_id": 0,
+  "image": "assets/social.jpg",
+  "sheets": [],
+  "docs": [],
+  "embedded": true,
+  "production": true
+}
